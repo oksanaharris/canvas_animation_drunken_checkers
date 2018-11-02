@@ -8,7 +8,7 @@ ctx = canvas.getContext('2d');
 
 var diamondW = 200;
 var diamondH = 200;
-var margin = -200;
+var margin = -20;
 
 console.log('window width ', window.innerWidth);
 console.log('window height ', window.innerHeight);
@@ -53,10 +53,10 @@ var rangeXMax = 40;
 var rangeYMin = 25;
 var rangeYMax = 30;
 
-var dxMin = 0.15;
-var dxMax = 0.25;
-var dyMin = 0.1;
-var dyMax = 0.2;
+var dxMin = 0.25;
+var dxMax = 0.35;
+var dyMin = 0.2;
+var dyMax = 0.3;
 
 for (var i = 0; i <= topToBottom; i++){
   vertices.push([]);
@@ -131,7 +131,7 @@ function animate(canvas, ctx){
           ctx.lineTo(vertices[n+2][j].x, vertices[n+2][j].y);
           ctx.lineTo(vertices[n+1][j-1].x, vertices[n+1][j-1].y);
           ctx.lineTo(vertices[n][j].x, vertices[n][j].y);
-          ctx.fillStyle = '#495867';
+          ctx.fillStyle = '#4d4967';
           // ctx.stroke();
           ctx.fill();
         }
