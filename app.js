@@ -131,7 +131,7 @@ function animate(canvas, ctx){
           ctx.lineTo(vertices[n+2][j].x, vertices[n+2][j].y);
           ctx.lineTo(vertices[n+1][j-1].x, vertices[n+1][j-1].y);
           ctx.lineTo(vertices[n][j].x, vertices[n][j].y);
-          ctx.fillStyle = '#4d4967';
+          ctx.fillStyle = '#413e56';
           // ctx.stroke();
           ctx.fill();
         }
