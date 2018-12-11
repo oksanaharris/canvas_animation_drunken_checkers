@@ -6,6 +6,8 @@ canvas.height = window.innerHeight;
 
 ctx = canvas.getContext('2d');
 
+var colorArr = ['#4deeea', '#74ee15', '#ffe700', '#f000ff', '#001eff', '#ff0303', '#8400ff', '#00fff6', '#0028ff', '#00ff28', '#ffa300', '#cf0060', '#ff00ff', '#13a8fe', '#4e87a4', '#b0d5ce', '#fff1e4', '#fa86ab', '#ee2889','#7b297d', '#e87888', '#eae8e5', '#b1185a','#c351a2', '#efa9df', '#f3cff1'];
+
 var diamondW = 200;
 var diamondH = 200;
 var margin = -20;
@@ -44,7 +46,7 @@ function Vertex(x, y, dx, dy, rangeX, rangeY, radius, color) {
   }
 
   this.update = function() {
-    this.drawCircles();
+    // this.drawCircles();
 
     if (this.x > x + this.rangeX/2 || this.x < x - this.rangeX/2) {
       this.dx = -this.dx;
@@ -126,43 +128,44 @@ function animate(canvas, ctx){
 
   var n = 0;
 
-  // while (n < topToBottom - 1) {
+  while (n < topToBottom - 1) {
 
-  //   if (n % 2 === 0) {
+    if (n % 2 === 0) {
 
-  //     for (var i = 0; i < across; i++){
-  //       ctx.beginPath();
-  //       ctx.moveTo(vertices[n][i].x, vertices[n][i].y);
-  //       ctx.lineTo(vertices[n+1][i+1].x, vertices[n+1][i+1].y);
-  //       ctx.lineTo(vertices[n+2][i].x, vertices[n+2][i].y);
-  //       ctx.lineTo(vertices[n+1][i].x, vertices[n+1][i].y);
-  //       ctx.lineTo(vertices[n][i].x, vertices[n][i].y);
-  //       ctx.strokeStyle = 'yellow';
-  //       ctx.lineWidth = 2;
-  //       ctx.stroke();
-  //       // ctx.fillStyle = '#ff3366';
-  //       // ctx.fill();
-  //     }
+      for (var i = 0; i < across; i++){
+        ctx.beginPath();
+        ctx.moveTo(vertices[n][i].x, vertices[n][i].y);
+        ctx.lineTo(vertices[n+1][i+1].x, vertices[n+1][i+1].y);
+        ctx.lineTo(vertices[n+2][i].x, vertices[n+2][i].y);
+        ctx.lineTo(vertices[n+1][i].x, vertices[n+1][i].y);
+        ctx.lineTo(vertices[n][i].x, vertices[n][i].y);
+        // ctx.strokeStyle = 'yellow';
+        // ctx.lineWidth = 2;
+        // ctx.stroke();
+        // ctx.fillStyle = '#ff3366';
+        ctx.fillStyle = colorArr[i];
+        ctx.fill();
+      }
 
-  //   } else {
-  //       for (var j = 1; j < across; j++){
-  //         // console.log('row ', n, ', vertex ', j);
-  //         ctx.beginPath();
-  //         ctx.moveTo(vertices[n][j].x, vertices[n][j].y);
-  //         ctx.lineTo(vertices[n+1][j].x, vertices[n+1][j].y);
-  //         ctx.lineTo(vertices[n+2][j].x, vertices[n+2][j].y);
-  //         ctx.lineTo(vertices[n+1][j-1].x, vertices[n+1][j-1].y);
-  //         ctx.lineTo(vertices[n][j].x, vertices[n][j].y);
-  //         // ctx.fillStyle = '#413e56';
-  //         ctx.strokeStyle = 'yellow';
-  //         ctx.lineWidth = 2;
-  //         ctx.stroke();
-  //         // ctx.fill();
-  //       }
-  //   }
+    } else {
+        for (var j = 1; j < across; j++){
+          // console.log('row ', n, ', vertex ', j);
+          ctx.beginPath();
+          ctx.moveTo(vertices[n][j].x, vertices[n][j].y);
+          ctx.lineTo(vertices[n+1][j].x, vertices[n+1][j].y);
+          ctx.lineTo(vertices[n+2][j].x, vertices[n+2][j].y);
+          ctx.lineTo(vertices[n+1][j-1].x, vertices[n+1][j-1].y);
+          ctx.lineTo(vertices[n][j].x, vertices[n][j].y);
+          ctx.fillStyle = '#413e56';
+          // ctx.strokeStyle = 'yellow';
+          // ctx.lineWidth = 2;
+          // ctx.stroke();
+          ctx.fill();
+        }
+    }
 
-  //   n++;
-  // }
+    n++;
+  }
 
   for (var p = 0; p < vertices.length; p++){
     console.log()
